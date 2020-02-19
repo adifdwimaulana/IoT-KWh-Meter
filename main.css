@@ -1,0 +1,26 @@
+body {
+    background-color: #fff !important;
+    overflow-x: hidden;
+}
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    margin-top: 50px;
+    height: 285px;
+}
+
+.navbar-brand {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button-collapse {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cols{
+	margin: 20px 10px;
+	width: 100px;
+}

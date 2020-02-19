@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>KWh Meter Online</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+	  <a class="navbar-brand" href="#">Online KWH Meter</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  </div>
+	  </div>
+	</nav>
+	<div class="row justify-content-center">
+			<button class="btn btn-warning cols" type="button" data-toggle="collapse" data-target="#collapse-arus" aria-expanded="false" aria-controls="collapse-arus">Arus</button>
+			<button class="btn btn-primary cols" type="button" data-toggle="collapse" data-target="#collapse-sisakwh" aria-expanded="false" aria-controls="collapse-sisakwh">Sisa KWh</button>
+			<button class="btn btn-success cols" type="button" data-toggle="collapse" data-target="#collapse-daya" aria-expanded="false" aria-controls="collapse-daya">Daya</button>
+			<button class="btn btn-danger cols" type="button" data-toggle="collapse" data-target="#collapse-kwh" aria-expanded="false" aria-controls="collapse-kwh">KWh</button>	  
+			<button class="btn btn-info cols" type="button" data-toggle="collapse" data-target="#collapse-tegangan" aria-expanded="false" aria-controls="collapse-tegangan">Tegangan</button>	  
+
+	</div>
+	<div class="main-content">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-2 col-md-6 col-sm-12 collapse" id="collapse-arus">
+					<!-- Current Column -->
+					<div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+						<div style="font-size: 20px;" class="card-header">Arus</div>
+						<div class="card-body">
+							<h4 id="arus" class="card-title">A</h1>
+								<p class="card-text">Arus dinyatakan dalam Ampere</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-6 col-sm-12 collapse" id="collapse-sisakwh">
+					<!-- Current Kwh Column -->
+					<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+						<div style="font-size: 20px;" class="card-header">Sisa KWh</div>
+						<div class="card-body">
+							<h4 id="currentkwh" class="card-title">KWh</h1>
+								<p class="card-text">Sisa KWh dinyatakan dalam KWh</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-6 col-sm-12 collapse" id="collapse-daya">
+					<!-- Daya Column -->
+					<div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+						<div style="font-size: 20px;" class="card-header">Daya</div>
+						<div class="card-body">
+							<h4 id="daya" class="card-title">Watt</h1>
+								<p class="card-text">Daya dinyatakan dalam Watt</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-6 col-sm-12 collapse" id="collapse-kwh">
+					<!-- Kwh Column -->
+					<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+						<div style="font-size: 20px;" class="card-header">KWh</div>
+						<div class="card-body">
+							<h4 id="kwh" class="card-title">KWh</h1>
+								<p class="card-text">KWh dinyatakan dalam KWh</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-6 col-sm-12 collapse" id="collapse-tegangan">
+					<!-- Kwh Column -->
+					<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+						<div style="font-size: 20px;" class="card-header">Tegangan</div>
+						<div class="card-body">
+							<h4 id="tegangan" class="card-title">Tegangan</h1>
+								<p class="card-text">Tegangan dinyatakan dalam V</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center">
+				<h3 class="mt-5">Isi token di sini !</h3>
+			</div>
+			<div class="row justify-content-center">
+				<form action="" method="POST" id="submitForm">
+					<div class="row justify-content-center">
+						<div class="col-md-12 form-group">
+							<label for="token" class="form-control-label">Jumlah Token</label>
+							<input type="number" name="token" id="token" class="form-control" placeholder="Rp. 50.000,-"
+								required style="width: 500px;">
+						</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-md-12">
+							<button type="submit" id="submitBtn" class="btn btn-primary mb-5" onclick="sendValue()">Simpan</button>
+						</div>
+					</div>
+				</form>
+			</div>	
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.4.1/firebase-database.js"></script>
+	<script src="main.js"></script>
+</body>
+
+</html>
